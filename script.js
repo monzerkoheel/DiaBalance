@@ -93,8 +93,10 @@ function render() {
 function Nav() {
   return `
     <div class="nav">
-      <b>🩺 DiaBalance</b>
-
+    <b>
+      <img src="DiaBalance.png" alt="logo" class="logo">
+      DiaBalance
+    </b>
       <button onclick="toggleLang()">🌐 ${lang === "ar" ? "EN" : "AR"}</button>
 
       <button onclick="setPage('home')">${t[lang].home}</button>
@@ -110,7 +112,7 @@ function Nav() {
 
 function Home() {
   return `
-    <h1>${t[lang].title}</h1>
+    <h1><img src="DiaBalance.png" alt="logo" class="logo2"> ${t[lang].title}</h1>
     <p>${t[lang].desc}</p>
     <img src="https://placehold.co/1200x400/1e88e5/ffffff?text=DiaBalance+Kids+Health">
   `;
