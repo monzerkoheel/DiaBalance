@@ -10,6 +10,7 @@ const t = {
     insulin: "الأنسولين",
     kids: "عالم الأطفال",
     food: "التغذية",
+    products: "المنتجات",
     contact: "تواصل",
     title: "DiaBalance",
     desc: "منصة ذكية لمتابعة السكري للأطفال بطريقة ممتعة وآمنة 🎈",
@@ -25,6 +26,7 @@ const t = {
     insulin: "Insulin",
     kids: "Kids",
     food: "Nutrition",
+    products: "Products",
     contact: "Contact",
     title: "DiaBalance",
     desc: "Smart diabetes care platform for kids in a fun safe way 🎈",
@@ -72,6 +74,25 @@ const quiz = {
   answer: 1
 };
 
+// ✅ NEW: Products Data
+const products = [
+  {
+    name: { ar: "سكر ستيفيا", en: "Stevia Sugar" },
+    price: "150 EGP",
+    img: "s.jpeg"
+  },
+  {
+    name: { ar: "شوكولاتة بدون سكر", en: "Sugar Free Chocolate" },
+    price: "50 EGP",
+    img: "c.jpeg"
+  },
+  {
+    name: { ar: "بسكويت دايت", en: "Diet Biscuits" },
+    price: "70 EGP",
+    img: "cc.jpeg"
+  }
+];
+
 function render() {
   const app = document.getElementById("app");
 
@@ -84,6 +105,7 @@ function render() {
       ${page === "insulin" ? "<div>Insulin</div>" : ""}
       ${page === "kids" ? Kids() : ""}
       ${page === "food" ? Food() : ""}
+      ${page === "products" ? Products() : ""}
       ${page === "contact" ? Contact() : ""}
     </div>
     <footer>© 2026 DiaBalance 💙</footer>
@@ -105,6 +127,7 @@ function Nav() {
       <button onclick="setPage('insulin')">${t[lang].insulin}</button>
       <button onclick="setPage('kids')">${t[lang].kids}</button>
       <button onclick="setPage('food')">${t[lang].food}</button>
+      <button onclick="setPage('products')">${t[lang].products}</button>
       <button onclick="setPage('contact')">${t[lang].contact}</button>
     </div>
   `;
@@ -112,7 +135,7 @@ function Nav() {
 
 function Home() {
   return `
-    <h1><img src="DiaBalance.png" alt="logo" class="logo2"> ${t[lang].title}</h1>
+    <h1><img src="DiaBalance.png" class="logo2"> ${t[lang].title}</h1>
     <p>${t[lang].desc}</p>
     <img src="https://placehold.co/1200x400/1e88e5/ffffff?text=DiaBalance+Kids+Health">
   `;
@@ -159,6 +182,24 @@ function Food() {
     <h2>🍎 Nutrition</h2>
     <div class="card">1 bread = 15g carbs</div>
     <div class="card">Tip: Eat more vegetables 🥦</div>
+  `;
+}
+
+// ✅ NEW: Products Page
+function Products() {
+  return `
+    <h2>🛒 ${t[lang].products}</h2>
+
+    <div class="products-grid">
+      ${products.map(p => `
+        <div class="product-card">
+          <img src="${p.img}">
+          <h3>${p.name[lang]}</h3>
+          <p class="price">${p.price}</p>
+          <button class="buy-btn">Buy</button>
+        </div>
+      `).join("")}
+    </div>
   `;
 }
 
